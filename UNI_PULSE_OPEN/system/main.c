@@ -7,11 +7,25 @@
 
 
 #include "system.h"
+#include "control.h"
+#include "version.h"
 
 
 void main(void)
 {
-    // Initialize device
-    initialization_system();
+    // initialize device
+    initialize_system();
+
+    // initialize control variable
+    initialze_variable();
     
+    // version information
+    get_product_infomation();
+
+    while(1)
+    {
+        ;
+    }
+
+
 }

@@ -9,12 +9,8 @@
 #define SYSTEM_H_
 
 
+#include "driverlib.h"
 
-
-
-
-
-
-void initialization_system(void);
+void initialize_system(void);
 
 #endif /* SYSTEM_H_ */

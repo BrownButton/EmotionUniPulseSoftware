@@ -110,6 +110,11 @@ void Device_init(void)
     GPIO_setAnalogMode(21U, GPIO_ANALOG_DISABLED);
     GPIO_setAnalogMode(28U, GPIO_ANALOG_DISABLED);
 
+    GPIO_setAnalogMode(226, GPIO_ANALOG_DISABLED);
+    GPIO_setAnalogMode(227, GPIO_ANALOG_DISABLED);
+    GPIO_setAnalogMode(228, GPIO_ANALOG_DISABLED);
+    GPIO_setAnalogMode(230, GPIO_ANALOG_DISABLED);
+
     //
     // Enable lockstep compare module
     //
