@@ -14,6 +14,22 @@
 #include "io_process.h"
 #include "control.h"
 
+#pragma CODE_SECTION(read_current, ".TI.ramfunc");
+#pragma CODE_SECTION(ADC_readPPBResult, ".TI.ramfunc");
+#pragma CODE_SECTION(update_command_position, ".TI.ramfunc");
+#pragma CODE_SECTION(read_cw_command, ".TI.ramfunc");
+#pragma CODE_SECTION(read_ccw_command, ".TI.ramfunc");
+#pragma CODE_SECTION(EQEP_getPosition, ".TI.ramfunc");
+#pragma CODE_SECTION(filter_maf, ".TI.ramfunc");
+#pragma CODE_SECTION(run_control_mode, ".TI.ramfunc");
+#pragma CODE_SECTION(control_current_pid, ".TI.ramfunc");
+#pragma CODE_SECTION(filter_lpf, ".TI.ramfunc");
+#pragma CODE_SECTION(lpf_initialize, ".TI.ramfunc");
+#pragma CODE_SECTION(set_voltage_duty, ".TI.ramfunc");
+#pragma CODE_SECTION(EPWM_setCounterCompareValue, ".TI.ramfunc");
+
+
+
 
 PULSE                   cw,ccw;
 PHASE_FIND              phase_find;
@@ -42,9 +58,6 @@ void control_current_pid(void);
 void calculate_monitoring_variable(void);
 void control_stop_current(void);
 void control_servo(void);
-
-
-
 
 
 
