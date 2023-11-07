@@ -102,18 +102,18 @@ void get_system_parameter(void)
     initial_parameter.input_mode        = (uint16_t)system_configration_variable.data.input_mode;
     initial_parameter.motor_direction   = (uint16_t)system_configration_variable.data.motor_direction;
     initial_parameter.selftest          = (uint16_t)system_configration_variable.data.selftest;
-
-    if(system_configration_variable.data.gain_sel == true)
+    initial_parameter.gain_sel          = (uint16_t)system_configration_variable.data.gain_sel;
+    if(initial_parameter.gain_sel == true)
     {
-        initial_parameter.p_gain            = param_gain [(uint16_t) system_configration_variable.data.run_current]
+        initial_parameter.p_gain            = (float32_t)param_gain [(uint16_t) system_configration_variable.data.run_current]
                                                          [(uint16_t) system_configration_variable.data.gain].p_gain;
-        initial_parameter.d_gain            = param_gain [(uint16_t) system_configration_variable.data.run_current]
+        initial_parameter.d_gain            = (float32_t)param_gain [(uint16_t) system_configration_variable.data.run_current]
                                                          [(uint16_t) system_configration_variable.data.gain].d_gain;
     }
     else
     {
-        initial_parameter.p_gain            = param_gain_other [(uint16_t) system_configration_variable.data.gain].p_gain;
-        initial_parameter.d_gain            = param_gain_other [(uint16_t) system_configration_variable.data.gain].d_gain;
+        initial_parameter.p_gain            = (float32_t)param_gain_other [(uint16_t) system_configration_variable.data.gain].p_gain;
+        initial_parameter.d_gain            = (float32_t)param_gain_other [(uint16_t) system_configration_variable.data.gain].d_gain;
     }
 }
 

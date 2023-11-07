@@ -9,7 +9,7 @@
 #include "system.h"
 #include "control.h"
 #include "version.h"
-
+#include "serial.h"
 
 void main(void)
 {
@@ -24,7 +24,7 @@ void main(void)
 
     while(1)
     {
-        ;
+        process_serial_communication();
     }
 
 

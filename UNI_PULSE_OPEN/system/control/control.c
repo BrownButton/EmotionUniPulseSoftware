@@ -555,7 +555,7 @@ void calculate_monitoring_variable(void)
             cmd_pos.m_deltacnt = cw.m_deltacnt - ccw.m_deltacnt;
         }
         if(initial_parameter.motor_direction == true) { cmd_pos.m_deltacnt = -cmd_pos.m_deltacnt; }
-        cstep.cmd_speed = cstep.MONITORING_RPM_CONSTANT * (cmd_pos.v_deltacnt / MONITORING_RPM_CNT );
+        cstep.m_cmd_speed = cstep.MONITORING_RPM_CONSTANT * (cmd_pos.v_deltacnt / MONITORING_RPM_CNT );
 
         monitoring_cnt = 0;
     }

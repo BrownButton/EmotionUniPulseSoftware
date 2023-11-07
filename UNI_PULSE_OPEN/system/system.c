@@ -244,21 +244,21 @@ void configure_gpios(void)
 //    GPIO_setQualificationPeriod(RUN_CURRNET2_GPIO, QUALPRD_DIVIDE);
 //    GPIO_setQualificationPeriod(RUN_CURRNET3_GPIO, QUALPRD_DIVIDE);
 
-//    GPIO_setQualificationPeriod(STOP_CURRNET0_GPIO, QUALPRD_DIVIDE);
+    GPIO_setQualificationPeriod(STOP_CURRNET0_GPIO, QUALPRD_DIVIDE);
     GPIO_setQualificationPeriod(STOP_CURRNET1_GPIO, QUALPRD_DIVIDE);
 
     GPIO_setQualificationPeriod(GAIN0_GPIO, QUALPRD_DIVIDE);
     GPIO_setQualificationPeriod(GAIN1_GPIO, QUALPRD_DIVIDE);
 
-    GPIO_setQualificationPeriod(RESOLUTION0_GPIO, QUALPRD_DIVIDE);
-//    GPIO_setQualificationPeriod(RESOLUTION1_GPIO, QUALPRD_DIVIDE);
-//    GPIO_setQualificationPeriod(RESOLUTION2_GPIO, QUALPRD_DIVIDE);
+//    GPIO_setQualificationPeriod(RESOLUTION0_GPIO, QUALPRD_DIVIDE);
+    GPIO_setQualificationPeriod(RESOLUTION1_GPIO, QUALPRD_DIVIDE);
+    GPIO_setQualificationPeriod(RESOLUTION2_GPIO, QUALPRD_DIVIDE);
     GPIO_setQualificationPeriod(RESOLUTION3_GPIO, QUALPRD_DIVIDE);
 
     GPIO_setQualificationPeriod(SELP_TEST_GPIO, QUALPRD_DIVIDE);
     GPIO_setQualificationPeriod(GAIN_SEL_GPIO, QUALPRD_DIVIDE);
-    GPIO_setQualificationPeriod(INPUT_MODE_GPIO, QUALPRD_DIVIDE);
-    GPIO_setQualificationPeriod(MOTOR_DIRECTION_GPIO, QUALPRD_DIVIDE);
+//    GPIO_setQualificationPeriod(INPUT_MODE_GPIO, QUALPRD_DIVIDE);
+//    GPIO_setQualificationPeriod(MOTOR_DIRECTION_GPIO, QUALPRD_DIVIDE);
 
 
     // Input qualification type
@@ -449,11 +449,11 @@ void init_sci(void)
     SCI_setConfig(RS232_SCI_BASE, DEVICE_LSPCLK_FREQ, 57600, (SCI_CONFIG_WLEN_8 |
                                                         SCI_CONFIG_STOP_ONE |
                                                         SCI_CONFIG_PAR_NONE));
+    SCI_enableModule(RS232_SCI_BASE);
+    SCI_enableFIFO(RS232_SCI_BASE);
     SCI_resetChannels(RS232_SCI_BASE);
     SCI_resetRxFIFO(RS232_SCI_BASE);
     SCI_resetTxFIFO(RS232_SCI_BASE);
-    SCI_enableFIFO(RS232_SCI_BASE);
-    SCI_enableModule(RS232_SCI_BASE);
     SCI_performSoftwareReset(RS232_SCI_BASE);
 
 }

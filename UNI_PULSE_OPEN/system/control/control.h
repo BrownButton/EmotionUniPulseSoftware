@@ -75,6 +75,7 @@ typedef struct{
     int32_t       m_curcnt,m_precnt;
     int32_t       m_deltacnt;
 }CMD_POS;
+extern CMD_POS  cmd_pos;
 
 typedef struct{
     float32_t     cmd_speed;
@@ -131,6 +132,8 @@ typedef struct{
     float32_t     motor_ls;
     float32_t     motor_dcr;
 }MOTOR_DETECT;
+extern MOTOR_DETECT            motor_detect;
+
 
 typedef enum {
     INIT_MOTOR_DETECT,
@@ -155,7 +158,7 @@ typedef union {
         unsigned    io_enable_state :1;
         unsigned    reserved        :13;
     }Bit;
-    int16_t    Full;
+    uint16_t    Full;
 }DRIVER_STATUS;
 extern DRIVER_STATUS driver_status;
 

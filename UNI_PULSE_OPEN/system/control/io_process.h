@@ -21,7 +21,7 @@ typedef union {
         unsigned    enable          :1;
         unsigned    reserved       :15;
     }Bit;
-    int16_t    Full;
+    uint16_t    Full;
 }INPUT_STATUS;
 extern INPUT_STATUS input_status;
 
@@ -31,7 +31,7 @@ typedef union {
         unsigned    alarm          :1;
         unsigned    reserved       :14;
     }Bit;
-    int16_t    Full;
+    uint16_t    Full;
 }OUTPUT_STATUS;
 extern OUTPUT_STATUS output_status;
 

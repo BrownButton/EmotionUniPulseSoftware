@@ -47,7 +47,7 @@ typedef union {
         unsigned    reserved1                 :4;
         unsigned    reserved2                 :15;
     }Bit;
-    int32_t    Full;
+    uint32_t    Full;
 }ERR_STATUS;
 extern ERR_STATUS   err_status;
 

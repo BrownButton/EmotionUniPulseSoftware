@@ -30,7 +30,7 @@ typedef union {
         unsigned    SW_Minor_Ver    :8;
         unsigned    SW_Major_Ver    :8;
     }Bit;
-    int32_t    Full;
+    uint32_t    Full;
 }OS_VERSION;
 extern OS_VERSION os_version;
 

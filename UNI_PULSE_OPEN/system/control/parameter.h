@@ -63,6 +63,7 @@ typedef struct {
     uint16_t    selftest;
     uint16_t    input_mode;
     uint16_t    motor_direction;
+    uint16_t    gain_sel;
 }INITIAL_PARAMETER;
 extern INITIAL_PARAMETER initial_parameter;
 

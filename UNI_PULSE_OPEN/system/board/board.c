@@ -201,6 +201,26 @@ uint16_t get_input_io_status(void)
 
 
 
+/********************************************************************/
+// SCI
+/********************************************************************/
+uint16_t check_rx_buf(void)
+{
+    return SCI_getRxFIFOStatus(RS232_SCI_BASE);
+}
+
+void read_rx_data(uint16_t *rx_data)
+{
+    *rx_data = SCI_readCharNonBlocking(RS232_SCI_BASE);
+}
+
+void write_tx_data(uint16_t tx_data)
+{
+    SCI_writeCharBlockingFIFO(RS232_SCI_BASE, tx_data);
+}
+
+
+
 
 
 
