@@ -124,6 +124,8 @@ void control_pwm(void)
 
 void run_control_mode(void)
 {
+    static uint16_t test_direction = 0;
+
     switch(control_mode)
     {
         case CONTROL_MOTOR_DETECTION:
@@ -141,8 +143,8 @@ void run_control_mode(void)
         case CONTROL_OPEN_LOOP:
             cstep.isq = cstep.actual_cur_ref;
 
-            if( cstep.isq > cstep.CURRENT_LIMIT)        cstep.isq = cstep.CURRENT_LIMIT;
-            else if( cstep.isq < -cstep.CURRENT_LIMIT)  cstep.isq = -cstep.CURRENT_LIMIT;
+            if( cstep.isq > cstep.CURRENT_LIMIT)        { cstep.isq = cstep.CURRENT_LIMIT; }
+            else if( cstep.isq < -cstep.CURRENT_LIMIT)  { cstep.isq = -cstep.CURRENT_LIMIT; }
 
             cstep.cmd_theta = (float64_t)cmd_pos.cal_pos * (float64_t)cstep.THETA_PULSE_TO_DEG_CONST;
             cstep.cmd_theta -= (float64_t)((int64_t)cstep.cmd_theta);
@@ -154,11 +156,18 @@ void run_control_mode(void)
         case CONTROL_SELF_TEST:
             cstep.isq = cstep.actual_cur_ref;
 
-            if( cstep.isq > cstep.CURRENT_LIMIT)        cstep.isq = cstep.CURRENT_LIMIT;
-            else if( cstep.isq < -cstep.CURRENT_LIMIT)  cstep.isq = -cstep.CURRENT_LIMIT;
+            if( cstep.isq > cstep.CURRENT_LIMIT)        { cstep.isq = cstep.CURRENT_LIMIT; }
+            else if( cstep.isq < -cstep.CURRENT_LIMIT)  { cstep.isq = -cstep.CURRENT_LIMIT; }
 
-            cstep.cmd_theta += rpm_to_electric_theta(SELP_TEST_RPM);
-            cstep.cmd_theta -= (float64_t)((int64_t)cstep.cmd_theta);
+            if(cstep.cmd_theta >= (POLE_NUMBER/2) )
+            { test_direction = DIR_CCW; }
+            else if (cstep.cmd_theta <= 0 )
+            { test_direction = DIR_CW; }
+
+            if(test_direction == DIR_CCW)
+            { cstep.cmd_theta -= rpm_to_electric_theta(SELP_TEST_RPM); }
+            else
+            { cstep.cmd_theta += rpm_to_electric_theta(SELP_TEST_RPM); }
 
             cur_pid.a_ref = cstep.isq * __cospuf32(cstep.cmd_theta);
             cur_pid.b_ref = cstep.isq * __sinpuf32(cstep.cmd_theta);
@@ -429,7 +438,7 @@ void update_command_position(void)
             cmd_pos.deltacnt = cw.deltacnt - ccw.deltacnt;
         }
 
-        if(initial_parameter.motor_direction == true) { cmd_pos.deltacnt = -cmd_pos.deltacnt; }
+        if(initial_parameter.motor_direction == DIR_CCW) { cmd_pos.deltacnt = -cmd_pos.deltacnt; }
         updated_cmd_pulse =  filter_maf(&cmd_maf_1st , cmd_pos.deltacnt);
         cmd_update_cnt = 0;
     }
@@ -528,7 +537,7 @@ void calculate_monitoring_variable(void)
 
         cmd_pos.v_deltacnt = cw.v_deltacnt - ccw.v_deltacnt;
     }
-    if(initial_parameter.motor_direction == true) { cmd_pos.v_deltacnt = -cmd_pos.v_deltacnt; }
+    if(initial_parameter.motor_direction == DIR_CCW) { cmd_pos.v_deltacnt = -cmd_pos.v_deltacnt; }
     cmd_pos.v_total += cmd_pos.v_deltacnt;
     cstep.cmd_speed = cstep.MONITORING_RPM_CONSTANT * cmd_pos.v_deltacnt ;
 
@@ -554,7 +563,7 @@ void calculate_monitoring_variable(void)
 
             cmd_pos.m_deltacnt = cw.m_deltacnt - ccw.m_deltacnt;
         }
-        if(initial_parameter.motor_direction == true) { cmd_pos.m_deltacnt = -cmd_pos.m_deltacnt; }
+        if(initial_parameter.motor_direction == DIR_CCW) { cmd_pos.m_deltacnt = -cmd_pos.m_deltacnt; }
         cstep.m_cmd_speed = cstep.MONITORING_RPM_CONSTANT * (cmd_pos.v_deltacnt / MONITORING_RPM_CNT );
 
         monitoring_cnt = 0;

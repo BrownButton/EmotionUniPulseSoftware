@@ -29,7 +29,6 @@
 #define     VDC                             24
 #define     VDC_RECIPROCAL                  (float32_t)(1 / VDC)
 
-
 #define DC_LINK_CONST       0.012890625 // (3.3/4096)*((27000+1800)/1800)
 #define DEVICE_TEMP_CONST   3.3*100.0 / 4096.0
 

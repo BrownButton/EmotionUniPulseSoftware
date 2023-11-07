@@ -36,6 +36,9 @@
 #define MOTOR_RUN   1
 #define MOTOR_STOP  0
 
+#define DIR_CW      0
+#define DIR_CCW     1
+
 typedef enum {
     CONTROL_MOTOR_DETECTION,
     CONTROL_PHASE_FINDING,
