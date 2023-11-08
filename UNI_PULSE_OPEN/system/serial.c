@@ -140,12 +140,12 @@ void make_tx_data_frame_32bit(uint16_t *index, uint16_t *txdata, uint32_t req_da
 void make_tx_data_frame_16bit(uint16_t *index, uint16_t *txdata, uint16_t req_data)
 {
     *index = *index + 1;    txdata[*index] = (uint16_t)(req_data & 0xFF);
-    *index = *index + 1;    txdata[*index++] = (uint16_t)((req_data >> 8)  & 0xFF);
+    *index = *index + 1;    txdata[*index] = (uint16_t)((req_data >> 8)  & 0xFF);
 }
 
 void make_tx_data_frame_8bit(uint16_t *index, uint16_t *txdata, uint16_t req_data)
 {
-    *index = *index + 1;    txdata[*index++] = (uint16_t)(req_data & 0xFF);
+    *index = *index + 1;    txdata[*index] = (uint16_t)(req_data & 0xFF);
 }
 
 
