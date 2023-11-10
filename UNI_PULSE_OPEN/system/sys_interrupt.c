@@ -50,7 +50,6 @@ __interrupt void control_current_loop(void)
 __interrupt void calibration_adc_ref_loop(void)
 {
 
-
     if( initialize_adc_reference() == true)
     {
         // Starts CPU-Timer 0

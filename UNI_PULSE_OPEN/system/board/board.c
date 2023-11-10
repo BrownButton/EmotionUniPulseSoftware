@@ -103,7 +103,7 @@ int16_t initialize_adc_reference(void)
     }
     else
     {
-        adc_offset = ALARM_CURRENT_LIMIT * CURRENT_PER_BITS;
+        adc_offset = ALARM_CURRENT_LIMIT / CURRENT_PER_BITS;
 
         ADC_setupPPB(CURRENT_A_ADC, ADC_PPB_NUMBER1, ADC_SOC_NUMBER0);
         ADC_setupPPB(CURRENT_B_ADC, ADC_PPB_NUMBER1, ADC_SOC_NUMBER0);
@@ -158,21 +158,23 @@ void update_adc_system_variable(float32_t *dc_link, float32_t *device_temp, floa
     if(ADC_getInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER2) == true)
     {
         ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER2);
-        *dc_link = (float32_t)ADC_readResult(CURRENT_A_ADC, ADC_SOC_NUMBER1) * DC_LINK_CONST;
+        *dc_link = (float32_t)ADC_readResult(CURRENT_A_ADCARESULT, ADC_SOC_NUMBER1) * DC_LINK_CONST;
     }
 
     //Device TEMP
     if(ADC_getInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER3) == true)
     {
         ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER3);
-        *device_temp = (float32_t)ADC_readResult(CURRENT_A_ADC, ADC_SOC_NUMBER2) * DEVICE_TEMP_CONST - 50;
+        *device_temp = (float32_t)ADC_readResult(CURRENT_A_ADCARESULT, ADC_SOC_NUMBER2) * (float32_t)DEVICE_TEMP_CONST - 50.0;
+
     }
 
     //DSP TEMP
     if(ADC_getInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER4) == true)
     {
-        ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER4);
-        *dsp_temp = ((float32_t)ADC_readResult(CURRENT_A_ADC, ADC_SOC_NUMBER3) * 3.3/2.5 - ADC_EXT_REF_TSOFFSET ) * 4096.0 / ADC_EXT_REF_TSSLOPE ;
+        //ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER4);
+        //*dsp_temp = ((float32_t)ADC_readResult(CURRENT_A_ADCARESULT, ADC_SOC_NUMBER3) * 3.3/2.5 - ADC_EXT_REF_TSOFFSET ) * 4096.0 / ADC_EXT_REF_TSSLOPE ;
+        *dsp_temp = 25;
     }
 }
 

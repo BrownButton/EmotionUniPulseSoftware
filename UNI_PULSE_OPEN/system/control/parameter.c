@@ -97,7 +97,7 @@ PARAM_GAIN param_gain_other[4] =
 void get_system_parameter(void)
 {
     initial_parameter.run_current       = param_run_current [(uint16_t) system_configration_variable.data.run_current] ;
-    initial_parameter.stop_current      = param_run_current [(uint16_t) system_configration_variable.data.stop_current] ;
+    initial_parameter.stop_current      = param_stop_currnet [(uint16_t) system_configration_variable.data.stop_current] ;
     initial_parameter.resolution        = param_resoltion [(uint16_t) system_configration_variable.data.resoulution] ;
     initial_parameter.input_mode        = (uint16_t)system_configration_variable.data.input_mode;
     initial_parameter.motor_direction   = (uint16_t)system_configration_variable.data.motor_direction;

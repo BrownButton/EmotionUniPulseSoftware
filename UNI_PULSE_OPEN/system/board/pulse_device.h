@@ -129,15 +129,15 @@ extern "C"
 #define RUN_CURRNET3_GPIO               17
 #define RUN_CURRNET3_PIN_CFG            GPIO_17_GPIO17
 
-#define STOP_CURRNET0_GPIO              228
-#define STOP_CURRNET0_PIN_CFG           GPIO_228_GPIO228
-#define STOP_CURRNET1_GPIO              226
-#define STOP_CURRNET1_PIN_CFG           GPIO_226_GPIO226
+#define STOP_CURRNET0_GPIO              28
+#define STOP_CURRNET0_PIN_CFG           GPIO_28_GPIO28
+#define STOP_CURRNET1_GPIO              29
+#define STOP_CURRNET1_PIN_CFG           GPIO_29_GPIO29
 
-#define GAIN0_GPIO                      29
-#define GAIN0_PIN_CFG                   GPIO_29_GPIO29
-#define GAIN1_GPIO                      28
-#define GAIN1_PIN_CFG                   GPIO_28_GPIO28
+#define GAIN0_GPIO                      226
+#define GAIN0_PIN_CFG                   GPIO_226_GPIO226
+#define GAIN1_GPIO                      228
+#define GAIN1_PIN_CFG                   GPIO_228_GPIO228
 
 #define RESOLUTION0_GPIO                8
 #define RESOLUTION0_PIN_CFG             GPIO_8_GPIO8

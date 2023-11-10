@@ -20,18 +20,18 @@ extern PULSE_INPUT_MODE pulse_input_mode;
 
 typedef union {
     struct  {
-        uint16_t    run_current0            :1;
-        uint16_t    run_current1            :1;
-        uint16_t    run_current2            :1;
         uint16_t    run_current3            :1;
-        uint16_t    stop_current0           :1;
+        uint16_t    run_current2            :1;
+        uint16_t    run_current1            :1;
+        uint16_t    run_current0            :1;
         uint16_t    stop_current1           :1;
-        uint16_t    gain0                   :1;
+        uint16_t    stop_current0           :1;
         uint16_t    gain1                   :1;
-        uint16_t    resoulgion0             :1;
-        uint16_t    resoulgion1             :1;
-        uint16_t    resoulgion2             :1;
+        uint16_t    gain0                   :1;
         uint16_t    resoulgion3             :1;
+        uint16_t    resoulgion2             :1;
+        uint16_t    resoulgion1             :1;
+        uint16_t    resoulgion0             :1;
         uint16_t    selftest                :1;
         uint16_t    input_mode              :1;
         uint16_t    motor_direction         :1;

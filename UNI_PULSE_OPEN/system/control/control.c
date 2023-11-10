@@ -207,6 +207,7 @@ void detect_motor_characteristic(void)
             break;
 
         case CALCULATE_DCR :
+            motor_detect.cnt++;
             motor_detect.a_pwm_voltage = ((float32_t)(MID_VOLT_POINT - get_voltage_duty() ))
                                             * (float32_t)VDC / (float32_t)MID_VOLT_POINT;
             motor_detect.vlotage_average += abs(motor_detect.a_pwm_voltage);

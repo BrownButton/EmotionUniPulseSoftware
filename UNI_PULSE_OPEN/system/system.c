@@ -507,6 +507,17 @@ void init_adc(void)
     ADC_setInterruptSOCTrigger(CURRENT_A_ADC, ADC_SOC_NUMBER0, ADC_INT_SOC_TRIGGER_NONE);
     ADC_setInterruptSOCTrigger(CURRENT_B_ADC, ADC_SOC_NUMBER0, ADC_INT_SOC_TRIGGER_NONE);
 
+    ADC_setInterruptSource(CURRENT_A_ADC, ADC_INT_NUMBER1, ADC_SOC_NUMBER0);
+    ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER1);
+    ADC_disableContinuousMode(CURRENT_A_ADC, ADC_INT_NUMBER1);
+    ADC_enableInterrupt(CURRENT_A_ADC, ADC_INT_NUMBER1);
+
+    ADC_setInterruptSource(CURRENT_B_ADC, ADC_INT_NUMBER1, ADC_SOC_NUMBER0);
+    ADC_clearInterruptStatus(CURRENT_B_ADC, ADC_INT_NUMBER1);
+    ADC_disableContinuousMode(CURRENT_B_ADC, ADC_INT_NUMBER1);
+    ADC_enableInterrupt(CURRENT_B_ADC, ADC_INT_NUMBER1);
+
+
     // DC LINK interrupt no mapping
     ADC_setInterruptSource(CURRENT_A_ADC, ADC_INT_NUMBER2, ADC_SOC_NUMBER1);
     ADC_clearInterruptStatus(CURRENT_A_ADC, ADC_INT_NUMBER2);
@@ -531,8 +542,6 @@ void init_adc(void)
 
     ADC_setupPPB(CURRENT_B_ADC, ADC_PPB_NUMBER1, ADC_SOC_NUMBER0);
     ADC_setPPBReferenceOffset(CURRENT_B_ADC, ADC_PPB_NUMBER1, 2048);
-
-
 }
 
 

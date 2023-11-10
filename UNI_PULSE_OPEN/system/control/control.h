@@ -21,7 +21,7 @@
 #define MID_VOLT_POINT           (EPWM_TBPRD / 2)
 
 #define RPM_TO_DELTA_ELECTRIC_THETA     ( 50.0 / 60.0 / 1000.0 / 40.0  ) //  pole pair / min to sec / sec to msec / msec to 25usec
-#define SELP_TEST_RPM       (0.5)
+#define SELP_TEST_RPM       (30.0)
 
 #define D_GAIN_TH_SPEED         (100.0)
 #define PWMVOUT_LPF_TH1_SPEED   (600.0)

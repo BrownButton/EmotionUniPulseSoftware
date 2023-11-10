@@ -26,6 +26,4 @@ void main(void)
     {
         process_serial_communication();
     }
-
-
 }
