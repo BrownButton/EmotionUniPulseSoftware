@@ -54,6 +54,7 @@ void clear_ccw_command(void);
 
 uint16_t sevo_control(uint16_t cmd);
 uint16_t get_input_io_status(void);
+uint16_t get_output_io_status(void);
 
 uint16_t check_rx_buf(void);
 void read_rx_data(uint16_t *rx_data);

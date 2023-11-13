@@ -25,8 +25,8 @@ void display_system_status(void);
 
 void io_process(void)
 {
-    input_status.Bit.enable = get_input_io_status();
-
+    input_status.Full = get_input_io_status();
+    output_status.Full = get_output_io_status();
     if(input_status.Bit.enable == true) { io_enable_cnt++; }
     else
     {

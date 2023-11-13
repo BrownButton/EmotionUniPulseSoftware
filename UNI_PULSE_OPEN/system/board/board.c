@@ -200,6 +200,15 @@ uint16_t get_input_io_status(void)
     return temp = ~temp & 0x1 ;
 }
 
+uint16_t get_output_io_status(void)
+{
+    uint16_t temp,temp1;
+
+    temp = ( ((uint16_t)GPIO_readPin(BRAKE_GPIO)) & 0x1 );
+    temp |= ( (((uint16_t)GPIO_readPin(ALARM_GPIO)) & 0x1) << 1 );
+    return temp = ~temp & 0xFFFF ;
+}
+
 
 
 
